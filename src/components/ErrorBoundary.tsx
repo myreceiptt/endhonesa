@@ -32,7 +32,7 @@ export class ErrorBoundary extends React.Component<
     if (this.state.hasError) {
       return (
         <div className="flex justify-center items-center h-screen">
-          <h2 className="text-left text-sm font-medium text-icon-wording">
+          <h2 className="text-center text-sm font-medium font-[family-name:var(--font-geist-mono)]">
             Something went wrong. Please try and/or error again later.
           </h2>
         </div>

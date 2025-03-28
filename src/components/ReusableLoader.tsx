@@ -34,11 +34,11 @@ const Loader: React.FC<LoaderProps> = ({ message }) => {
 
   return (
     <span
-      className={`text-left text-sm font-medium font-[family-name:var(--font-geist-mono)] transition-all duration-700
+      className={`text-center text-sm font-medium font-[family-name:var(--font-geist-mono)] transition-all duration-700
     ${
       isActive
-        ? "text-background animate-pulse"
-        : "text-foreground hover:text-background hover:animate-pulse"
+        ? "text-foreground animate-pulse"
+        : "text-foreground hover:text-foreground hover:animate-pulse"
     }`}
       onClick={handleTap}>
       {message}

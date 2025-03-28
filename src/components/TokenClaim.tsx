@@ -124,7 +124,7 @@ const TokenClaim: React.FC = () => {
   });
 
   return (
-    <div className="w-3/4 grid grid-cols-1 gap-4">
+    <div className="w-full grid grid-cols-1 gap-4">
       {/* Column: Image */}
       <div className="flex justify-center cursor-pointer">
         <Image
@@ -152,9 +152,9 @@ const TokenClaim: React.FC = () => {
               : "text-background hover:text-foreground hover:animate-pulse"
           }`}
           onClick={handleTap}>
-          OiOi Token bukan uang, bukan jimat, tapi bukan sekadar token. OiOi
-          Token adalah pengingat: bahwa kita masih waras, masih bisa mencatat
-          kenyataan — walau dunia disetel untuk lupa.
+          OiOi Token bukan uang, bukan jimat, bukan sekadar token. OiOi Token
+          itu pengingat: bahwa kita masih waras, masih bisa mencatat kenyataan —
+          walau dunia diatur supaya lupa.
         </h2>
         <h2
           className={`text-center text-sm font-medium font-[family-name:var(--font-geist-mono)] transition-all duration-700
@@ -164,8 +164,8 @@ const TokenClaim: React.FC = () => {
               : "text-background hover:text-foreground hover:animate-pulse"
           }`}
           onClick={handleTap}>
-          Klaim OiOi Token ini, biar lengkap visa dan paspormu, bukti kamu sudah
-          resmi tinggal di negeri paling GELAP: ENDHONESA.
+          Klaim OiOi Token ini, biar lengkap kewarganegaraanmu, bukti kamu sudah
+          resmi jadi penduduk dan tinggal di negeri paling GELAP: ENDHONESA.
         </h2>
         <h2
           className={`text-center text-sm font-medium font-[family-name:var(--font-geist-mono)] transition-all duration-700
@@ -182,24 +182,24 @@ const TokenClaim: React.FC = () => {
           kamu tak bungkam.
         </h2>
         <h1
-          className={`text-left text-sm font-medium font-[family-name:var(--font-geist-mono)] transition-all duration-700
+          className={`text-center text-sm font-medium font-[family-name:var(--font-geist-mono)] transition-all duration-700
           ${
             isActive
               ? "text-foreground animate-pulse"
               : "text-background hover:text-foreground hover:animate-pulse"
           }`}
           onClick={handleTap}>
-          Dipersembahkan oleh{" "}
+          oleh{" "}
           <Link href="https://www.endhonesa.com/" target="_blank">
-            ENDHONESA GELAP.
+            ENDHONESA GELAP ;p
           </Link>
         </h1>
 
         <div className="flex flex-col gap-2 items-center justify-center">
-          <h4 className="text-left text-xs font-medium"></h4>
-          <h4 className="text-left text-xs font-medium"></h4>
-          <h4 className="text-left text-xs font-medium"></h4>
-          <h4 className="text-left text-xs font-medium"></h4>
+          <h4 className="text-center text-xs font-medium"></h4>
+          <h4 className="text-center text-xs font-medium"></h4>
+          <h4 className="text-center text-xs font-medium"></h4>
+          <h4 className="text-center text-xs font-medium"></h4>
         </div>
 
         {/* Success or Error Messages */}
@@ -215,8 +215,8 @@ const TokenClaim: React.FC = () => {
           className={`w-full rounded-lg p-2 border-2 text-base font-semibold font-[family-name:var(--font-geist-mono)] transition-colors duration-700 ease-in-out
             ${
               isProcessing || erc20Claimed
-                ? "border-background hover:border-foreground text-background hover:text-foreground"
-                : "border-background hover:border-foreground text-background hover:text-foreground cursor-pointer"
+                ? "border-foreground hover:border-foreground text-foreground hover:text-foreground hover:animate-pulse"
+                : "border-foreground hover:border-foreground text-foreground hover:text-foreground hover:animate-pulse cursor-pointer"
             }
           `}
           contractAddress={oioiT0kenMonadTestnet.address}
@@ -283,7 +283,7 @@ const TokenClaim: React.FC = () => {
           )}{" "}
           OiOi. Total ada {currentSupply} OiOi yang sudah diklaim. Sekali klaim
           maksimal {amount} OiOi. Kamu bisa klaim sehari sekali. Batas klaim
-          hingga 17 Agustus 2025.
+          sampai 17 Agustus 2025.
         </h4>
       </div>
     </div>
