@@ -175,11 +175,10 @@ const TokenClaim: React.FC = () => {
               : "text-background hover:text-foreground hover:animate-pulse"
           }`}
           onClick={handleTap}>
-          OiOi Token dicetak di {oioiT0kenMonadTestnet.chain.name} blockchain,
-          bukan di lembar kertas negara. Semuanya bisa dicek — no tipu-tipu, no
-          sensor-sensoran. Sebab kita tak lagi butuh stempel birokrasi, cukup
-          jejak digital sebagai saksi: kamu hidup di ENDHONESA yang GELAP, tapi
-          kamu tak bungkam.
+          OiOi Token dicetak di blockchain Monad Testnet, bukan di lembar kertas
+          negara. Semuanya bisa dicek — no tipu-tipu, no sensor-sensoran. Sebab
+          kita tak lagi butuh stempel birokrasi, cukup jejak digital sebagai
+          saksi: kamu hidup di ENDHONESA yang GELAP, tapi kamu tak bungkam.
         </h2>
         <h1
           className={`text-center text-sm font-medium font-[family-name:var(--font-geist-mono)] transition-all duration-700
