@@ -63,8 +63,14 @@ export default function LoginButton() {
 
   return (
     <div
-      className="w-full flex items-center justify-center"
+      className={`w-full flex flex-row items-center justify-center border-2 rounded-lg transition-all duration-700
+        ${
+          isActive
+            ? "border-foreground text-foreground animate-pulse"
+            : "border-background text-background hover:border-foreground hover:text-foreground hover:animate-pulse"
+        }`}
       onClick={handleTap}>
+      <span className="text-3xl leading-6">&rarr;</span>
       <ConnectButton
         client={client}
         appMetadata={{
@@ -106,6 +112,7 @@ export default function LoginButton() {
           },
         })}
       />
+      <span className="text-3xl leading-6">&larr;</span>
     </div>
   );
 }
