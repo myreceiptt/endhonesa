@@ -99,13 +99,15 @@ export default function LoginButton() {
         detailsButton={{
           displayBalanceToken: displayedTekeks,
           render: () => (
-            <button className="flex items-center justify-center px-4 py-2 text-xl font-[family-name:var(--font-geist-mono)] hover:bg-black text-background hover:text-foreground hover:animate-pulse rounded-lg cursor-pointer transition-colors duration-700 ease-in-out">
-              My Receipt
+            <button className="flex items-center justify-center px-4 py-2 text-xl font-[family-name:var(--font-geist-mono)] text-background hover:text-foreground hover:animate-pulse rounded-lg cursor-pointer transition-colors duration-700 ease-in-out">
+              NOTAmu...
             </button>
           ),
         }}
         detailsModal={{
           assetTabs: ["token", "nft"],
+          connectedAccountAvatarUrl: "/tokens/oioi.png",
+          connectedAccountName: "Prof. NOTA",
         }}
         theme={lightTheme({
           colors: {

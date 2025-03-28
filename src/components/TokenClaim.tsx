@@ -28,6 +28,7 @@ const TokenClaim: React.FC = () => {
   const [erc20Claimed, setErc20Claimed] = useState(true);
   const [isProcessing, setIsProcessing] = useState(false);
   const [amount, setAmount] = useState<string>("0");
+  const [pesanAwal, setPesanAwal] = useState<string | null>("Ceki... Ceki...");
   const [pesanTunggu, setPesanTunggu] = useState<string | null>(null);
   const [pesanKirim, setPesanKirim] = useState<string | null>(null);
   const [pesanSukses, setPesanSukses] = useState<string | null>(null);
@@ -180,15 +181,20 @@ const TokenClaim: React.FC = () => {
           jejak digital sebagai saksi: kamu hidup di ENDHONESA yang GELAP, tapi
           kamu tak bungkam.
         </h2>
-        <div className="flex flex-row gap-2">
-          <h1 className="text-left text-sm font-medium">oleh</h1>
-          <span className="text-3xl leading-6">&#9673;</span>
-          <h1 className="text-left text-sm font-medium">
-            <Link href="https://www.endhonesa.com/" target="_blank">
-              ENDHONESA GELAP
-            </Link>
-          </h1>
-        </div>
+        <h1
+          className={`text-left text-sm font-medium font-[family-name:var(--font-geist-mono)] transition-all duration-700
+          ${
+            isActive
+              ? "text-foreground animate-pulse"
+              : "text-background hover:text-foreground hover:animate-pulse"
+          }`}
+          onClick={handleTap}>
+          Dipersembahkan oleh{" "}
+          <Link href="https://www.endhonesa.com/" target="_blank">
+            ENDHONESA GELAP.
+          </Link>
+        </h1>
+
         <div className="flex flex-col gap-2 items-center justify-center">
           <h4 className="text-left text-xs font-medium"></h4>
           <h4 className="text-left text-xs font-medium"></h4>
@@ -197,6 +203,7 @@ const TokenClaim: React.FC = () => {
         </div>
 
         {/* Success or Error Messages */}
+        {pesanAwal && <Loader message={pesanAwal} />}
         {pesanTunggu && <Loader message={pesanTunggu} />}
         {pesanKirim && <Loader message={pesanKirim} />}
         {pesanSukses && <Loader message={pesanSukses} />}
@@ -205,11 +212,11 @@ const TokenClaim: React.FC = () => {
         {/* Claim Button */}
         <ClaimButton
           unstyled
-          className={`w-full rounded-lg p-2 text-base font-semibold transition-colors duration-300 ease-in-out
+          className={`w-full rounded-lg p-2 border-2 text-base font-semibold font-[family-name:var(--font-geist-mono)] transition-colors duration-700 ease-in-out
             ${
               isProcessing || erc20Claimed
-                ? "border-2 border-solid border-border-tombol bg-back-ground text-hitam-judul-body"
-                : "border-2 border-solid border-back-ground text-back-ground bg-hitam-judul-body cursor-pointer"
+                ? "border-background hover:border-foreground text-background hover:text-foreground"
+                : "border-background hover:border-foreground text-background hover:text-foreground cursor-pointer"
             }
           `}
           contractAddress={oioiT0kenMonadTestnet.address}
@@ -222,13 +229,14 @@ const TokenClaim: React.FC = () => {
           disabled={Boolean(isProcessing || !amount || erc20Claimed)}
           onClick={() => {
             setIsProcessing(true);
-            setPesanTunggu("Harap sabar dan tunggu.");
+            setPesanAwal(null);
+            setPesanTunggu("Sabar dan tunggu, yaa!");
             setPesanSukses(null);
             setPesanGagal(null);
           }}
           onTransactionSent={() => {
             setPesanTunggu(null);
-            setPesanKirim("Mengklaim OiOi Token.");
+            setPesanKirim("OiOi Token sedang diklaim.");
           }}
           onError={(error) => {
             setIsProcessing(false);
@@ -239,7 +247,7 @@ const TokenClaim: React.FC = () => {
           onTransactionConfirmed={async () => {
             setIsProcessing(false);
             setPesanKirim(null);
-            setPesanSukses("Berhasil klaim OiOi Token.");
+            setPesanSukses("OiOi Token berhasil diklaim.");
             try {
               // Refetch claim condition
               const activeCondition20 = await canClaim({
