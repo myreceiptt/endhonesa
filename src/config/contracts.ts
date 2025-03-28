@@ -38,25 +38,6 @@ export const tryAndError = getContract({
   client,
 });
 
-// Fungible Tokens Contracts
-export const oioiTokenBase = getContract({
-  address: "0xba0032620d88D9b16752CbDE75593c080C3d38de",
-  chain: base,
-  client,
-});
-
-export const oioiT0kenBaseSepolia = getContract({
-  address: "0xcB2208E9Fb77591D3A0688C4459d976b1f16Ab53",
-  chain: baseSepolia,
-  client,
-});
-
-export const oioiT0kenMonadTestnet = getContract({
-  address: "0x8d7402Ae89CdF92D3477d9D63517F5e609caBcb2",
-  chain: monadTestnet,
-  client,
-});
-
 // All Supported NFTs
 // Define the type explicitly
 type SupportedNFTs = {
@@ -75,6 +56,25 @@ export const tekeks: SupportedNFTs = {
     tryAndError.address, // Try and Error
   ],
 };
+
+// Fungible Tokens Contracts
+export const oioiTokenBase = getContract({
+  address: "0xba0032620d88D9b16752CbDE75593c080C3d38de",
+  chain: base,
+  client,
+});
+
+export const oioiT0kenBaseSepolia = getContract({
+  address: "0xcB2208E9Fb77591D3A0688C4459d976b1f16Ab53",
+  chain: baseSepolia,
+  client,
+});
+
+export const oioiT0kenMonadTestnet = getContract({
+  address: "0x8d7402Ae89CdF92D3477d9D63517F5e609caBcb2",
+  chain: monadTestnet,
+  client,
+});
 
 // All Supported Tokens (FTs)
 // Define `tokeks` with the proper type

@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ENDHONESA - Gelap, OiOi!!!!",
   description:
-    "ENDHONESAENDHONESA its territory is always changing because not limited by space-time. Where each 1-bit data owned by the residents of ENDHONESA is stored and used (processed and displayed), there and at that time is the legal territory of ENDHONESA.",
+    "ENDHONESA its territory is always changing because not limited by space-time. Where each 1-bit data owned by the residents of ENDHONESA is stored and used (processed and displayed), there and at that time is the legal territory of ENDHONESA.",
   metadataBase: new URL("https://endhonesa.com"),
   authors: [
     { name: "MyReceipt", url: "https://myreceipt.endhonesa.com" },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ENDHONESA - Gelap, OiOi!!!!",
     description:
-      "ENDHONESAENDHONESA its territory is always changing because not limited by space-time. Where each 1-bit data owned by the residents of ENDHONESA is stored and used (processed and displayed), there and at that time is the legal territory of ENDHONESA.",
+      "ENDHONESA its territory is always changing because not limited by space-time. Where each 1-bit data owned by the residents of ENDHONESA is stored and used (processed and displayed), there and at that time is the legal territory of ENDHONESA.",
     url: "https://endhonesa.com",
     siteName: "ENDHONESA.COM",
     locale: "en-US",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     creatorId: "@MyReceiptTT",
     title: "ENDHONESA - Gelap, OiOi!!!!",
     description:
-      "ENDHONESAENDHONESA its territory is always changing because not limited by space-time. Where each 1-bit data owned by the residents of ENDHONESA is stored and used (processed and displayed), there and at that time is the legal territory of ENDHONESA.",
+      "ENDHONESA its territory is always changing because not limited by space-time. Where each 1-bit data owned by the residents of ENDHONESA is stored and used (processed and displayed), there and at that time is the legal territory of ENDHONESA.",
     images: ["https://endhonesa.com/preview-image-of-endhonesa.png"],
   },
 };
