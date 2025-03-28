@@ -70,7 +70,9 @@ export default function LoginButton() {
             : "border-background text-background hover:border-foreground hover:text-foreground hover:animate-pulse"
         }`}
       onClick={handleTap}>
-      <span className="text-3xl leading-6">&rarr;</span>
+      <span className="text-3xl font-bold font-[family-name:var(--font-geist-mono)]">
+        &rarr;
+      </span>
       <ConnectButton
         client={client}
         appMetadata={{
@@ -112,7 +114,9 @@ export default function LoginButton() {
           },
         })}
       />
-      <span className="text-3xl leading-6">&larr;</span>
+      <span className="text-3xl font-bold font-[family-name:var(--font-geist-mono)]">
+        &larr;
+      </span>
     </div>
   );
 }
