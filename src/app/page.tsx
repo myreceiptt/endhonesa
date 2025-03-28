@@ -1,102 +1,125 @@
-import Image from "next/image";
+// src/app/page.tsx
+
+"use client";
+
+// External libraries
+import { useCallback, useEffect, useRef, useState } from "react";
+import { defineChain } from "thirdweb";
+import {
+  avalanche,
+  base,
+  baseSepolia,
+  ethereum,
+  optimism,
+  zora,
+} from "thirdweb/chains";
+import { ConnectButton, lightTheme } from "thirdweb/react";
+
+// Blockchain configurations
+import { client } from "@/config/client";
+import { dompets } from "@/config/dompets";
+import {
+  displayedTekeks,
+  tekeks,
+  theAccountFactory,
+  tokeks,
+} from "@/config/contracts";
+
+const monadTestnet = defineChain(10143);
+const chains = [
+  avalanche,
+  base,
+  baseSepolia,
+  ethereum,
+  monadTestnet,
+  optimism,
+  zora,
+];
 
 export default function Home() {
+  const [isActive, setIsActive] = useState(false);
+  const lastTapRef = useRef(0);
+
+  // Untuk handle double tap di mobile
+  const handleTap = useCallback(() => {
+    const now = Date.now();
+    if (now - lastTapRef.current < 300) {
+      // double tap
+      setIsActive(true);
+    } else {
+      // single tap (reset if already active)
+      if (isActive) setIsActive(false);
+    }
+    lastTapRef.current = now;
+  }, [isActive]);
+
+  useEffect(() => {
+    const handleTouch = () => handleTap();
+    window.addEventListener("touchend", handleTouch);
+    return () => {
+      window.removeEventListener("touchend", handleTouch);
+    };
+  }, [handleTap]);
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+      <main
+        className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start"
+        onClick={handleTap}>
+        <h1
+          className={`text-2xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold font-[family-name:var(--font-geist-mono)] transition-all duration-300 
+        ${
+          isActive
+            ? "text-foreground animate-pulse"
+            : "text-background hover:text-foreground hover:animate-pulse"
+        }`}>
+          GELAP, OiOi!!!!
+        </h1>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      <footer
+        className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center"
+        onClick={handleTap}>
+        <ConnectButton
+          client={client}
+          appMetadata={{
+            name: "ENDHONESA - Gelap, OiOi!!!!",
+            url: "https://endhonesa.com",
+            description:
+              "ENDHONESAENDHONESA its territory is always changing because not limited by space-time. Where each 1-bit data owned by the residents of ENDHONESA is stored and used (processed and displayed), there and at that time is the legal territory of ENDHONESA.",
+            logoUrl: "https://endhonesa.com/logos/oioi.png",
+          }}
+          wallets={dompets}
+          accountAbstraction={{
+            factoryAddress: theAccountFactory,
+            chain: base,
+            sponsorGas: true,
+          }}
+          chains={chains}
+          connectModal={{
+            showThirdwebBranding: false,
+            title: "Prof. NOTA Inc.",
+            titleIcon: "/logos/oioi.png",
+          }}
+          supportedTokens={tokeks}
+          supportedNFTs={tekeks}
+          detailsButton={{
+            displayBalanceToken: displayedTekeks,
+            render: () => (
+              <button className="flex items-center justify-center px-4 py-2 text-xl font-[family-name:var(--font-geist-mono)] hover:bg-foreground hover:text-background rounded-lg cursor-pointer">
+                My Receipt
+              </button>
+            ),
+          }}
+          detailsModal={{
+            assetTabs: ["token", "nft"],
+          }}
+          theme={lightTheme({
+            colors: {
+              primaryButtonBg: "#171717",
+              primaryButtonText: "#171717",
+            },
+          })}
+        />
       </footer>
     </div>
   );
